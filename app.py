@@ -11,8 +11,8 @@ from langchain.callbacks import get_openai_callback
 
 def main():
     load_dotenv() 
-    st.set_page_config(page_title="AI PDF Chatbot")
-    st.header("🤖 AI PDF Chatbot")
+    st.set_page_config(page_title="AI PDF QnA Bot")
+    st.header("🤖 AI PDF QnA Bot")
     
     # Upload PDF file
     pdf = st.file_uploader("Upload your PDF", type="pdf")
