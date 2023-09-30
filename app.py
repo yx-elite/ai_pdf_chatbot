@@ -42,13 +42,21 @@ def main():
         response = ""
         
         if user_prompt:
-            docs = knowledge_base.similarity_search(user_prompt)
+            try:
+                st.text("Generating answer...")
+                
+                docs = knowledge_base.similarity_search(user_prompt)
             
-            llm = OpenAI()
-            chain = load_qa_chain(llm, chain_type='stuff')
-            with get_openai_callback() as cb:
-                response = chain.run(input_documents=docs, question=user_prompt)
-                print(cb)
+                llm = OpenAI()
+                chain = load_qa_chain(llm, chain_type='stuff')
+                with get_openai_callback() as cb:
+                    response = chain.run(input_documents=docs, question=user_prompt)
+                    print(cb)
+                
+                st.success("Answer is generated successfully")
+            
+            except Exception as e:
+                st.error(f"An error occurred: {str(e)}")
         
         st.write(response)
 
