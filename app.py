@@ -52,7 +52,7 @@ def main():
                         response = chain.run(input_documents=docs, question=user_prompt)
                         print(cb)
                     
-                    st.success("Answer is generated successfully")
+                st.success("Answer is generated successfully")
             
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
